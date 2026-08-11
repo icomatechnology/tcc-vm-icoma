@@ -5,7 +5,10 @@
 Bem-vindo ao projeto **Máquina Nuvem**! Somos uma iniciativa comprometida com **Sustentabilidade**, **Responsabilidade Social** e **Governança Corporativa**. Aqui, a tecnologia encontra o propósito.
 
 ---
-
+## Adicional do Render
+´´´
+app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))
+´´´
 ## 💚 Nossa Missão ESG
 
 Utilizamos infraestrutura em nuvem de forma inteligente e responsável para:
