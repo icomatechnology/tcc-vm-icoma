@@ -43,6 +43,18 @@
           <div class="col-sm"></div>
           <div class="col-sm">
             <form>
+              
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Entre com seu e-mail:</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
