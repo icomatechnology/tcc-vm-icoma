@@ -1,5 +1,6 @@
 #!/bin/sh
 source .venv/bin/activate
+python.exe -m pip install --upgrade pip
 python -u -m flask --app main run -p $PORT --debug
 pip install --update
 pip install numpy pandas
@@ -11,4 +12,3 @@ pip install firebase_admin
 pip install flask
 pip install flask-cors
 pip install google-generativeai
-npm install update

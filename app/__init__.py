@@ -17,7 +17,7 @@ def create_app():
     except Exception as e:
         print("Atenção: Firebase não foi inicializado corretamente.", e)
 
-   from app.controllers.home_controller import home_bp
+    from app.controllers.home_controller import home_bp
     from app.controllers.auth_controller import auth_bp
 
     app.register_blueprint(home_bp)
