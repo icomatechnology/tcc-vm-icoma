@@ -19,10 +19,11 @@ class UserRepository:
         })
 
     def get_user(self, uid: str) -> User:
-        """Retrieves user data from Firestore."""
         db = firestore.client()
         doc = db.collection('users').document(uid).get()
         if doc.exists:
             data = doc.to_dict()
-            return User(uid=uid, nome=data.get('nome'), email=data.get('email'), created_at=data.get('created_at'))
+            return User(uid=uid, nome=data.get('nome'), 
+                        email=data.get('email'), 
+                        created_at=data.get('created_at'))
         return None
