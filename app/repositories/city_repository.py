@@ -9,10 +9,12 @@ class CityRepository:
         cities = []
         for doc in docs:
             data = doc.to_dict()
-            cities.append(City(id=doc.id, 
-                                state=data.get('state'), 
+            cities.append(City(id=doc.id,
+                                name=data.get('name'),
+                                state=data.get('state'),
+                                initials=data.get('initials'),
                                 country=data.get('country'), 
-                                country_i   nitials=data.get('country_initials'),
+                                country_initials=data.get('country_initials'),
                                 timezone=data.get('timezone'),
                                 health_cust=data.get('health_cust'),
                                 airport=data.get('airport')))
@@ -24,7 +26,9 @@ class CityRepository:
         if doc.exists:
             data = doc.to_dict()
             return City(id=doc.id, 
+                        name=data.get('name'),
                         state=data.get('state'), 
+                        initials=data.get('initials'),
                         country=data.get('country'), 
                         country_initials=data.get('country_initials'),
                         timezone=data.get('timezone'),
@@ -35,19 +39,23 @@ class CityRepository:
     def add_city(self, city: City) -> str:
         db = firestore.client()
         doc = db.collection('cities').add({
-            'state': city.state, 
+            'name': city.name,
+            'state': city.state,
+            'initials': city.initials,
             'country': city.country, 
             'country_initials': city.country_initials,
             'timezone': city.timezone,
             'health_cust': city.health_cust,
             'airport': city.airport
         })
-        return doc.id
+        return doc[1].id
 
     def update_city(self, city_id: str, city: City) -> bool:
         db = firestore.client()
         db.collection('cities').document(city_id).update({
-            'state': city.state, 
+            'name': city.name,
+            'state': city.state,
+            'initials': city.initials,
             'country': city.country, 
             'country_initials': city.country_initials,
             'timezone': city.timezone,
